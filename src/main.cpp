@@ -1,5 +1,6 @@
 #include <Arduino.h>
-// Set Pins for Arduino-Uno Board
+
+// Set Pins for Arduino-Uno Board:
 #define enablePin_A 6
 #define IN1 5
 #define IN2 4
@@ -7,21 +8,22 @@
 #define IN4 2
 #define enablePin_B 1
 
+// Set Pins & variables for Ultrasonic Sensor:
 #define trigPin 13
 #define echoPin 12
-
-// Set Pins for 
 float duration, distance;
 
+// Movement for DC Motor:
 void motorA_forward();
 void motorA_backward();
 void motorB_forward();
 void motorB_backward();
+
+// Ultrasonic Sensor Read:
 int ultrasonic_sensor();
 
 void setup()
 {
-
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
 
@@ -38,24 +40,23 @@ void setup()
 
 void loop()
 {
-
-  int dist = ultrasonic_sensor();
-
-  if(dist <= 5.00)
+  // If there is an object distance 5.00 away from the ultrasonic sensor, move foward:
+  if(ultrasonic_sensor() <= 5.00)
   {
     motorA_forward();  
-    delayMicroseconds(500);
+    delayMicroseconds(2);
     motorB_forward();
-    delay(500);
+    delay(50);
   }
-
+  
+  // Else don't move:
   else
   {
     digitalWrite(IN1, LOW);
     digitalWrite(IN2, LOW);
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, LOW);
-    delay(500);
+    delay(50);
   }
 }
 
@@ -72,20 +73,19 @@ int ultrasonic_sensor()
   Serial.println(distance); 
   delay(100);
   return distance;
-
 }
 
 void motorA_forward()
 {
-  Serial.println("Motor A: forward");
-  analogWrite(enablePin_A, 100);
+  Serial.println("Motor A: Move forward");
+  analogWrite(enablePin_A, 200);
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
 }
 
 void motorB_forward()
 {
-  Serial.println("Motor B: Motor forward");
+  Serial.println("Motor B: Move forward");
   analogWrite(enablePin_B, 100);
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, HIGH);
@@ -93,12 +93,14 @@ void motorB_forward()
 
 void motorA_backward()
 {
+  Serial.println("Motor A: Move backward");
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW); 
 }
 
 void motorB_backward()
 {
+  Serial.println("Motor B: Move backward");
   digitalWrite(IN3, HIGH);
   digitalWrite(IN4, LOW);
 }
