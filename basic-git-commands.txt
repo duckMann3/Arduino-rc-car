@@ -1,0 +1,3 @@
+Change Branch Name: git branch -m "oldname" "newname"
+
+Change the Base of Branch: git rebase
