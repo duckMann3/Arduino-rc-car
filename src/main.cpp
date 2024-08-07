@@ -28,13 +28,21 @@ void setup()
   pinMode(echoPin, INPUT);
 
   // Sets the pins as outputs:
-  pinMode(IN1, OUTPUT);
-  pinMode(IN2, OUTPUT);
-  pinMode(enablePin_A, OUTPUT);
+  // pinMode(IN1, OUTPUT);
+  // pinMode(IN2, OUTPUT);
+  // pinMode(enablePin_A, OUTPUT);
   
-  pinMode(IN3, OUTPUT);
-  pinMode(IN4, OUTPUT);
-  pinMode(enablePin_B, OUTPUT);
+  // pinMode(IN3, OUTPUT);
+  // pinMode(IN4, OUTPUT);
+  // pinMode(enablePin_B, OUTPUT);
+  pinMode(IN1, INPUT_PULLUP);
+  pinMode(IN2, INPUT_PULLUP);
+  pinMode(enablePin_A, INPUT_PULLUP);
+  
+  pinMode(IN3, INPUT_PULLUP);
+  pinMode(IN4, INPUT_PULLUP);
+  pinMode(enablePin_B, INPUT_PULLUP);
+
   Serial.begin(9600);
 }
 
@@ -43,10 +51,10 @@ void loop()
   // If there is an object distance 5.00 away from the ultrasonic sensor, move foward:
   if(ultrasonic_sensor() <= 5.00)
   {
-    motorA_forward();  
-    delayMicroseconds(2);
     motorB_forward();
-    delay(50);
+    // delayMicroseconds(10);
+    motorA_forward();  
+    delay(1000);
   }
   
   // Else don't move:
@@ -56,7 +64,7 @@ void loop()
     digitalWrite(IN2, LOW);
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, LOW);
-    delay(50);
+    delay(3000);
   }
 }
 
