@@ -1,3 +1,6 @@
-Change Branch Name: git branch -m "oldname" "newname"
+Rename Branch: git branch -m "oldname" "newname"
+Change the Base of Branch: git rebase "main"
+Delete Branch: git branch -d "name of branch"
+Set Name of git user: git config --global user.name "name"
+Set Name of git user: git config --global user.email "email"
 
-Change the Base of Branch: git rebase
