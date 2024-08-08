@@ -4,3 +4,23 @@ Delete Branch: git branch -d "name of branch"
 Set Name of git user: git config --global user.name "name"
 Set Name of git user: git config --global user.email "email"
 
+How to Copy a Version of Single FIle from One Git Branch to Another?
+Method 1: Using Git Checkout
+  1) git checkout "target branch" // Navigate to the branch where you want to copy the file.
+  2) git checkout "source branch" -- "path/to/file" // Use "checkout" to copy the file from the source branch to the current branch.
+  3) git add "path/to/file" // Add the file to the staging area.
+  4) git commit -m "Copied file from the source-branch to target-branch" // Commit the changes to the branch.
+
+Method 2: Using Git Show
+  1) git checkout "target-branch" // Switch the Target Branch
+  2) git show "source-branch:path/to/file > path/to/file" // Save the file content from the source branch to the target branch.
+  3) git add path/to/file
+     git commit -m "Copied file from source-branch using git show" // Stage and Commit the Changes
+
+Method 3: Using Git Cherry-Pick
+  1) git log "source-branch" -- "path/to/file" // Find the Commit with the file change
+  2) git checkout "target-branch" 
+     git cherry-pick <commit-hash> // Apply the commit to the current branch
+  3) git add "path/to/file"
+     git commit -m "Cherry-pciked file change from source-branch" // If there are any conflicts, resolve them, and commit the changes.
+
