@@ -4,6 +4,9 @@ Delete Branch: git branch -d "name of branch"
 Set Name of git user: git config --global user.name "name"
 Set Name of git user: git config --global user.email "email"
 
+How to Restore Branches:
+  git restore -s "desired branch" "desired file or directory"
+
 How to Copy a Version of Single FIle from One Git Branch to Another?
 Method 1: Using Git Checkout
   1) git checkout "target branch" // Navigate to the branch where you want to copy the file.
