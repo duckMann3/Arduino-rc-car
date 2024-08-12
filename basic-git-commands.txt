@@ -1,8 +1,12 @@
 Rename Branch: git branch -m "oldname" "newname"
 Change the Base of Branch: git rebase "main"
 Delete Branch: git branch -d "name of branch"
+Recover Deleted Branch: git checkout -b "name of branch"
 Set Name of git user: git config --global user.name "name"
 Set Name of git user: git config --global user.email "email"
+How to Make Remote Pushes to GitHub Account:
+  git remote set-url origin https://<token>@github.com/<username>/<repo>
+  git push origin <branch>
 
 How to Restore Branches:
   git restore -s "desired branch" "desired file or directory"
